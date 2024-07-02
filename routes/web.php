@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/', function () {
+Route::get('/ProyectoTienda', function () {
     return view('home');
 });
 
