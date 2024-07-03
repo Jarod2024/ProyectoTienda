@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Plataforma extends Model
 {
     use HasFactory;
-    public function productos(): HasMany
+    public function productos()
     {
         return $this->hasMany(Producto::class);
     }

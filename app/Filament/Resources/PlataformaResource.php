@@ -23,7 +23,10 @@ class PlataformaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombre')
+                    ->required()
+                    ->maxLength(255),
+                // Agrega otros campos según sea necesario
             ]);
     }
 
@@ -31,7 +34,10 @@ class PlataformaResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nombre')
+                    ->sortable()
+                    ->searchable(),
+                // Agrega otras columnas según sea necesario
             ])
             ->filters([
                 //

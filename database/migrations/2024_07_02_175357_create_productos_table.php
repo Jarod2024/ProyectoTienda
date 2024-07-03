@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreProducto');
+            $table->string('nombre');
+            $table->text('descripcion');
             $table->decimal('precio', 8, 2);
-            $table->decimal('descuento', 5, 2)->default(0);
-            $table->text('descripcion')->nullable();
+            $table->foreignId('plataforma_id')->constrained('plataformas')->cascadeOnDelete();
+            $table->foreignId('categoria_id')->constrained('categorias')->cascadeOnDelete();
+            $table->string('imagen')->nullable(); // Campo para la imagen, permitido ser nulo
             $table->timestamps();
+            
+            
+            
+        
         });
     }
 
