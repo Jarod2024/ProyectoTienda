@@ -14,6 +14,7 @@ class ListPlataformas extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+             
         ];
     }
 }

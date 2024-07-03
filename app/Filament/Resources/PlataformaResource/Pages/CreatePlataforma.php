@@ -9,4 +9,5 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePlataforma extends CreateRecord
 {
     protected static string $resource = PlataformaResource::class;
+    
 }

@@ -14,6 +14,7 @@ class EditPlataforma extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            
         ];
     }
 }
