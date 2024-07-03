@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-100 gradient-form" style="background-color: #b43b3b;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-10">
@@ -30,9 +30,9 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="{{asset('imagenes/controller.jpg')}}"
+                  <img src="{{asset('images/admin.jpg')}}"
                     style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">LOGIN</h4>
+                  <h4 class="mt-1 mb-5 pb-1">Iniciar Sesión</h4>
                 </div>
 
                 <form action="{{route('login')}}" method="post">
