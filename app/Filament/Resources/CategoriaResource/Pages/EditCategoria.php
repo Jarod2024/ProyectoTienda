@@ -14,6 +14,7 @@ class EditCategoria extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            
         ];
     }
 }

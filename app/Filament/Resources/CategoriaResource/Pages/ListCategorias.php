@@ -14,6 +14,7 @@ class ListCategorias extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+             
         ];
     }
 }
