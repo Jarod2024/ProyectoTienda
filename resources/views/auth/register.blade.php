@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-100 gradient-form" style="background-color: #b43b3b;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-10">
@@ -30,7 +30,7 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="{{asset('imagenes/controller.jpg')}}"
+                  <img src="{{asset('images/admin.jpg')}}"
                     style="width: 185px;" alt="logo">
                   <h4 class="mt-1 mb-5 pb-1">LOGIN</h4>
                 </div>
@@ -44,7 +44,21 @@
                   <input type="text" name="name" id="form2Example11" class="form-control"
                       placeholder="Ingresar nombre" />
                     </div>
-
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example11">Fecha Nacimiento</label>  
+                      <input type="date" name="date" id="form2Example11" class="form-control"
+                          placeholder="Ingresar fecha" />
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example11">Teléfono</label>  
+                      <input type="tel" name="phone" id="form2Example11" class="form-control"
+                          placeholder="Ingresar teléfono" />
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <label class="form-label" for="form2Example11">Dirección</label>  
+                      <input type="text" name="address" id="form2Example11" class="form-control"
+                          placeholder="Ingresar dirección" />
+                    </div>
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example11">Correo</label>  
                   <input type="email" name="email" id="form2Example11" class="form-control"
