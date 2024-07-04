@@ -37,7 +37,7 @@
 
                 <form action="{{route('register')}}" method="post">
                   @csrf
-                  <p>INICIAR SESIÓN</p>
+                  <p>REGISTRO</p>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example11">Nombre</label>  
