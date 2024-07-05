@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <title>Title</title>
+    <title>Registro de Usuario</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -16,7 +16,6 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"/>
       <link rel="stylesheet" href="{{ asset('assets/estilos.css') }}" />
-      
   </head>
 
   <body>
@@ -35,7 +34,7 @@
                   <h4 class="mt-1 mb-5 pb-1">LOGIN</h4>
                 </div>
 
-                <form action="{{route('register')}}" method="post">
+                <form action="{{ route('register') }}" method="post">
                   @csrf
                   <p>REGISTRO</p>
 
@@ -44,45 +43,44 @@
                   <input type="text" name="name" id="form2Example11" class="form-control"
                       placeholder="Ingresar nombre" />
                     </div>
-                    <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Fecha Nacimiento</label>  
-                      <input type="date" name="date" id="form2Example11" class="form-control"
-                          placeholder="Ingresar fecha" />
-                    </div>
-                    <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Teléfono</label>  
-                      <input type="tel" name="phone" id="form2Example11" class="form-control"
-                          placeholder="Ingresar teléfono" />
-                    </div>
-                    <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Dirección</label>  
-                      <input type="text" name="address" id="form2Example11" class="form-control"
-                          placeholder="Ingresar dirección" />
-                    </div>
-                  <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example11">Correo</label>  
-                  <input type="email" name="email" id="form2Example11" class="form-control"
-                      placeholder="Ingresar correo" />
-                    </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example22">Contraseña</label>  
-                  <input type="password" name="password" id="form2Example22" class="form-control" />
+                    <label class="form-label" for="form2Example11">Correo</label>  
+                    <input type="email" name="email" id="form2Example11" class="form-control" placeholder="Ingresar correo" />
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example22">Confirmar Contraseña</label>  
-                  <input type="password" name="password_confirmation" id="form2Example22" class="form-control" />
+                    <label class="form-label" for="form2Example22">Contraseña</label>  
+                    <input type="password" name="password" id="form2Example22" class="form-control" />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form2Example22">Confirmar Contraseña</label>  
+                    <input type="password" name="password_confirmation" id="form2Example22" class="form-control" />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="year_of_birth">Fecha de Nacimiento</label>
+                    <input type="date" name="year_of_birth" id="year_of_birth" class="form-control" required />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="phone_number">Número de Teléfono</label>
+                    <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Ingresar número de teléfono" required />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="Direccion">Dirección</label>
+                    <input type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Ingresar dirección" required />
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrarse</button>
-        
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2">Ir a Login</p>
-                    <a href="{{route('login')}}" class="btn btn-outline-danger">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-danger">Login</a>
                   </div>
 
                 </form>
@@ -103,9 +101,6 @@
     </div>
   </div>
 </section>
-
-
-
 
     <!-- Bootstrap JavaScript Libraries -->
     <script
