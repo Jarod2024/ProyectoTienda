@@ -20,6 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Livewire::setUpdateRoute(function($handle) {
+    return Route::post('/juegos/public/livewire/update', $handle);
+});
+
+
 // Ruta de home accesible para todos los usuarios autenticados
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
