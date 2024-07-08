@@ -6,7 +6,7 @@ use Illuminate\Contracts\View\View;
 
 class Dashboard extends \Filament\Pages\Dashboard
 {
-    protected static ?string $title = 'Custom Aasdasdadasd Title';
+    protected static ?string $title = 'Custom Dashboard Title';
 
     public function getHeader(): ?View
 {
