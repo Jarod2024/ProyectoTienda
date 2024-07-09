@@ -68,3 +68,30 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
+
+// Ruta de home accesible para todos los usuarios autenticados
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+// Ruta de perfil accesible para todos los usuarios autenticados
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
+
+// Rutas solo accesibles para administradores
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Aquí añades todas las rutas que solo los administradores pueden acceder
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    // Añade más rutas aquí...
+});
+
+// Rutas accesibles para empleados
+Route::middleware(['auth', 'role:employee'])->group(function () {
+    // Aquí añades todas las rutas que solo los empleados pueden acceder
+    Route::get('/employee/dashboard', [EmployeeDashboardController::class, 'index'])->name('employee.dashboard');
+    // Añade más rutas aquí...
+});
+
+// Rutas accesibles para usuarios
+Route::middleware(['auth', 'role:user'])->group(function () {
+    // Aquí añades todas las rutas que solo los usuarios pueden acceder
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    // Añade más rutas aquí...
+});
