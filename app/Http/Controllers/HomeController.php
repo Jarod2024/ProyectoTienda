@@ -6,7 +6,21 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // asegúrate de que tu controlador HomeController tenga el método index configurado para devolver la vista home.
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         return view('home');
