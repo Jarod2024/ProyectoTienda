@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class productos extends Model
 {
     use HasFactory;
+    public function estrenos()
+    {
+        return $this->hasMany(Estrenos::class);
+    }
+    public function ofertas()
+    {
+        return $this->hasOne(Ofertas::class);
+    }
     public function plataforma()
     {
         return $this->belongsTo(Plataforma::class);
@@ -17,4 +25,5 @@ class productos extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+    
 }
