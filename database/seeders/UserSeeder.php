@@ -20,5 +20,10 @@ class UserSeeder extends Seeder
             'email' => 'jechamorro3@espe.edu.ec',
             'password' => Hash::make('123456789'),
         ]);
+        DB::table('model_has_roles')->insert([
+            'role_id'=>'1',
+            'model_type'=>'App\Models\User',
+            'model_id'=>'1',
+        ]);
     }
 }
