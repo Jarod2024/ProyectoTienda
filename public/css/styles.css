@@ -426,5 +426,67 @@ footer .social-icons img {
     color: rgb(19, 19, 19);
     font-size: 13.4px;
 }
+.card {
+    width: 350px;
+    align-items: center;
+}
+.card:hover {
+    
+    transform: scale(1.05);
+	transition: transform 0.5s ease;
+}
+.card-img-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	border-radius: calc(0.375rem - 1px);
+  }
+
+
+  .card-img-top.image {
+	width: 250px !important;
+	height: 300px !important;
+  }
+  
+   .card-img,
+  .card-img-top,
+  .card-img-bottom {
+	width: 200px !important;
+	height: 300px !important;
+  }
+  
+  .card-img,
+  .card-img-top {
+	border-top-left-radius: calc(0.375rem - 1px);
+	border-top-right-radius: calc(0.375rem - 1px);
+  }
+  
+  .card-img,
+  .card-img-bottom {
+	border-bottom-right-radius: calc(0.375rem - 1px);
+	border-bottom-left-radius: calc(0.375rem - 1px);
+  }
+  
+  .card-group > .card {
+	margin-bottom: 0.75rem;
+  }
+  .text-muted {
+	--bs-text-opacity: 1;
+	color: #6c757d !important;
+  }
+  .text-decoration-underline {
+	text-decoration: underline !important;
+  }
+  
+  .text-decoration-line-through {
+	text-decoration: line-through !important;
+  }
+  .btn .badge {
+    position: relative;
+    top: -1px;
+}
 
 /*CSS para valoración con estrellas*/

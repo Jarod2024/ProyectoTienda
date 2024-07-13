@@ -6,19 +6,18 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\EmployeeDashboardController;
-use App\Http\Controllers\UserDashboardController;
-
-
-
+use App\Http\Controllers\juegoController;
+use App\Http\Controllers\DashController;
+use App\Http\Controllers\CategoriaController;
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/dashboard', [CategoriaController::class, 'list'])->name('dash');
+Route::get('/videojuegos',[juegoController::class,'list'])->name('videojuegos');
+
 
 Auth::routes();
 
