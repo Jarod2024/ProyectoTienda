@@ -7,14 +7,8 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
-class UserSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+ class UserSeeder extends Seeder
+ {
     public function run()
     {
         // TODO: Crear una condicion para que si el usuario ya

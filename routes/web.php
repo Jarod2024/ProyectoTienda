@@ -9,16 +9,25 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
-
+use App\Http\Controllers\juegoController;
+use App\Http\Controllers\DashController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function () {
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/ProyectoTienda', function () {
     return view('home');
 });
 
+Route::get('/videojuegos',[DashController::class,'index'])->name('videojuegos');
+
+Route::get('/dashboard', function () {
+    return redirect()->route('videojuegos');
+});
+
 Auth::routes();
+
 
 Livewire::setUpdateRoute(function($handle) {
     return Route::post('/juegos/public/livewire/update', $handle);
@@ -51,3 +60,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     // Añade más rutas aquí...
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+// routes/web.php
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
+
