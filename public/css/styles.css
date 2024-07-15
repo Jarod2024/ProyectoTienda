@@ -197,3 +197,330 @@ footer .social-icons a {
     text-decoration: none;
 }
 
+footer p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+
+footer .social-icons img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.light-button button.bt {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.light-button button.bt .button-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    background-color: #0a0a0a;
+    border-radius: 5px;
+    color: #0f0f0f;
+    font-weight: 700;
+    transition: 300ms;
+    outline: #0f0f0f 2px solid;
+    outline-offset: 20;
+}
+
+.light-button button.bt .button-holder img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+.light-button button.bt .light-holder {
+    position: absolute;
+    height: 200px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.light-button button.bt .light-holder .dot {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.light-button button.bt .light-holder .light {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+    background: transparent;
+}
+
+.light-button button.bt:hover .button-holder img {
+    border: 2px solid rgba(88, 101, 242, 1);
+}
+
+.light-button button.bt:hover .button-holder {
+    color: rgba(88, 101, 242, 1);
+    outline: rgba(88, 101, 242, 1) 2px solid;
+    outline-offset: 2px;
+}
+
+.light-button button.bt:hover .light-holder .light {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg,
+            rgba(88, 101, 242, 1) 0%,
+            rgba(255, 255, 255, 0) 75%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+/*CSS INSTAGRAM*/
+.Btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all .3s;
+    border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.customImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.BG {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    z-index: -1;
+    border-radius: 9px;
+    pointer-events: none;
+    transition: all .3s;
+}
+
+.Btn:hover .BG {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+}
+
+.Btn:hover .imageContainer {
+    background-color: rgba(156, 156, 156, 0.466);
+}
+
+/*CSS GITHUB*/
+
+.button_github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 15px;
+    background-color: #181717;
+    outline: 3px #181717 solid;
+    outline-offset: -3px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.button_github .text_github {
+    color: white;
+    font-weight: 700;
+    font-size: 1em;
+    transition: 400ms;
+}
+
+.button_github svg path {
+    transition: 400ms;
+}
+
+.button_github:hover {
+    background-color: transparent;
+}
+
+.button_github:hover .text_github {
+    color: #181717;
+}
+
+.button_github:hover svg path {
+    fill: #181717;
+}
+
+/*CSS BUSQUEDA*/
+.InputContainer {
+    width: 210px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+    width: 200px;
+    height: 40px;
+    border: none;
+    outline: none;
+    caret-color: rgb(255, 81, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    padding-left: 15px;
+    letter-spacing: 0.8px;
+    color: rgb(19, 19, 19);
+    font-size: 13.4px;
+}
+.card {
+    width: 350px;
+    align-items: center;
+}
+.card:hover {
+    
+    transform: scale(1.05);
+	transition: transform 0.5s ease;
+}
+.card-img-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	border-radius: calc(0.375rem - 1px);
+  }
+
+
+  .card-img-top.image {
+	width: 250px !important;
+	height: 300px !important;
+  }
+  
+   .card-img,
+  .card-img-top,
+  .card-img-bottom {
+	width: 200px !important;
+	height: 300px !important;
+  }
+  
+  .card-img,
+  .card-img-top {
+	border-top-left-radius: calc(0.375rem - 1px);
+	border-top-right-radius: calc(0.375rem - 1px);
+  }
+  
+  .card-img,
+  .card-img-bottom {
+	border-bottom-right-radius: calc(0.375rem - 1px);
+	border-bottom-left-radius: calc(0.375rem - 1px);
+  }
+  
+  .card-group > .card {
+	margin-bottom: 0.75rem;
+  }
+  .text-muted {
+	--bs-text-opacity: 1;
+	color: #6c757d !important;
+  }
+  .text-decoration-underline {
+	text-decoration: underline !important;
+  }
+  
+  .text-decoration-line-through {
+	text-decoration: line-through !important;
+  }
+  .btn .badge {
+    position: relative;
+    top: -1px;
+}
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.precio {
+    color: green;
+    font-size: 20px;
+}
+
+.detalles {
+    display: none; /* Inicialmente oculto */
+    margin-top: 10px;
+}
+
+.ver-detalles {
+    cursor: pointer; /* Cambia el cursor a mano */
+    color: blue; /* Color del texto */
+    text-decoration: underline; /* Subraya el texto */
+}
+.new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+/*CSS para valoración con estrellas*/
