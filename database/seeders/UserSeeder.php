@@ -2,28 +2,28 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
-class UserSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+ class UserSeeder extends Seeder
+ {
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Elian',
-            'email' => 'jechamorro3@espe.edu.ec',
-            'password' => Hash::make('123456789'),
+        // TODO: Crear una condicion para que si el usuario ya
+        // existe, solo lo recupere. Si no existe, entonces lo cree
+
+        // Creacion de un nuevo usuario administrador
+        $user = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@juegos.com',
+            'password' => Hash::make('123456789')
         ]);
-        DB::table('model_has_roles')->insert([
-            'role_id'=>'1',
-            'model_type'=>'App\Models\User',
-            'model_id'=>'1',
-        ]);
+
+        // Obtencion del rol admin para asignar al usuario
+        $role = Role::findByName('admin');
+
+        $user->assignRole($role);
     }
 }
