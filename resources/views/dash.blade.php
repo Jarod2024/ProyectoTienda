@@ -5,6 +5,7 @@
     <title>@yield('title', 'Dashboard')</title>
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- AdminLTE -->
  <!-- jQuery -->
  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -44,7 +45,8 @@
         </aside>-->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ url('/') }}" class="brand-link">
-        <span class="brand-text font-weight-light">Home</span>
+    <i class="fas fa-angle-double-left"></i>
+        <span class="brand-text font-weight-light">  go to Home</span>
     </a>
     <div class="sidebar">
         <nav class="mt-2">

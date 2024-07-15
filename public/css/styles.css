@@ -488,5 +488,44 @@ footer .social-icons img {
     position: relative;
     top: -1px;
 }
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 14px;
+}
 
+.old-price {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.precio {
+    color: green;
+    font-size: 20px;
+}
+
+.detalles {
+    display: none; /* Inicialmente oculto */
+    margin-top: 10px;
+}
+
+.ver-detalles {
+    cursor: pointer; /* Cambia el cursor a mano */
+    color: blue; /* Color del texto */
+    text-decoration: underline; /* Subraya el texto */
+}
+.new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+}
 /*CSS para valoración con estrellas*/

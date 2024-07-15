@@ -1,26 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-@extends('dash') {{-- Suponiendo que tienes un layout base llamado 'app' --}}
+@extends('dash') {{-- Asumiendo que tienes un layout base llamado 'dash' --}}
+
+@section('title', 'Videojuegos')
 
 @section('content')
-    <h1> Videojuegos</h1><br>
-   
+    <h1>Ofertas</h1><br>
+
+  
+
     <div class="row">
         @foreach ($productos as $producto)
-            <div class="col-md-3  mb-4">
-                <div class="card h-100 Productos">
+            @php
+                $oferta = $producto->ofertas->descuento; // Porcentaje de oferta
+                $precioAnterior = $producto->precio;
+                $precioOferta = $oferta ? $precioAnterior - ($precioAnterior * ($oferta / 100)) : $precioAnterior;
+            @endphp
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 Productos position-relative">
+                    @if ($oferta >= 0)
+                        <div class="discount-badge">
+                            {{ $oferta }}% OFF
+                        </div>
+                    @endif
                     <img class="card-img-top image" src="{{ asset('storage/' . $producto->imagen) }}" alt="...">
-                    <div class="card-body p-4">
+                    <div class="card-body p-3">
                         <div class="text-center">
                             <h5 class="fw-bolder">{{ $producto->nombre }}</h5>
-                            <span class="precio">${{ $producto->precio }}</span>
+                            @if ($oferta > 0)
+                                <div class="old-price">${{ $precioAnterior }}</div>
+                                <div class="precio">${{ number_format($precioOferta, 2) }}</div>
+                            @else
+                                <div class="precio">${{ number_format($precioAnterior, 2) }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
+                        
+                        <div class="text-center">
+                        <p class="ver-detalles">Ver detalles</p> <!-- Texto clickeable para mostrar detalles -->
+                        <div class="detalles">
+                        @if ($oferta > 0)
+                                <p>Descuento válido desde</p>
+                                <p>{{ $producto->ofertas->fecha_inicio }} al {{ $producto->ofertas->fecha_fin }}</p>
+                            @endif
+                                </div>
+                            <a href="#" class="btn btn-outline-dark mt-auto">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <h1>Estrenos</h1><br>
+    <div class="row">
+    {{-- Mostrar productos que son estrenos --}}
+        @foreach ($estrenos as $estreno)
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 Productos position-relative">
+                    <div class="new-badge">New</div>
+                    <img class="card-img-top image" src="{{ asset('storage/' . $estreno->imagen) }}" alt="...">
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <h5 class="fw-bolder">{{ $estreno->nombre }}</h5>
+                            <div class="precio">${{ number_format($estreno->precio, 2) }}</div>
                         </div>
                     </div>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -32,7 +73,16 @@
             </div>
         @endforeach
     </div>
+    <script>
+        // Script para mostrar/ocultar detalles al hacer clic en el texto
+        document.addEventListener('DOMContentLoaded', function () {
+            const verDetalles = document.querySelectorAll('.ver-detalles');
+            verDetalles.forEach(detalle => {
+                detalle.addEventListener('click', function () {
+                    const detalles = this.parentNode.querySelector('.detalles');
+                    detalles.style.display = detalles.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
 @endsection
-</body>
-</html>
-

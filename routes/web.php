@@ -4,27 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
-
-
+use App\Http\Controllers\juegoController;
+use App\Http\Controllers\DashController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/ProyectoTienda', function () {
     return view('home');
 });
-Route::get('/dashboard', [CategoriaController::class, 'list'])->name('dash');
-Route::get('/videojuegos',[juegoController::class,'list'])->name('videojuegos');
 
+Route::get('/videojuegos',[DashController::class,'index'])->name('videojuegos');
+
+Route::get('/dashboard', function () {
+    return redirect()->route('videojuegos');
+});
 
 Auth::routes();
 

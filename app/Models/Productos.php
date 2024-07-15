@@ -10,11 +10,11 @@ class productos extends Model
     use HasFactory;
     public function estrenos()
     {
-        return $this->hasMany(Estrenos::class);
+        return $this->hasMany(Estrenos::class,'producto_id');
     }
     public function ofertas()
     {
-        return $this->hasOne(Ofertas::class);
+        return $this->hasOne(Ofertas::class, 'producto_id');
     }
     public function plataforma()
     {
