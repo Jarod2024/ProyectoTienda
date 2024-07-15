@@ -9,6 +9,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Livewire;
+// Import the necessary classes
 
 
 Route::get('/', function () {
