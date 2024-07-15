@@ -41,6 +41,7 @@
             <div class="welcome-text">
                 <h1>BIENVENIDO ENTRETENIMIENTO GAMMING</h1>
                 <p>Bienvenido al nuestro rincón virtual de entretenimiento gamming donde la emoción y la aventura se fusionan. La personas amantes de los video juegos tenemos variedad de productos que les puede interesar y muchos juegos de estreno.</p>
+                <a href="{{ route('videojuegos') }}" class="btn btn-primary mt-3">Ir al Dashboard</a> 
             </div>
             <div class="welcome-image">
                 <img src="{{ asset('images/controller.jpg') }}" alt="Game Controller">
@@ -52,42 +53,51 @@
                 <button class="carousel-button prev" data-carousel="offers">&lt;</button>
                 <div class="carousel-track-container">
                     <ul class="carousel-track">
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/spiderman.jpg') }}" alt="Spiderman">
-                            <p>SPIDER-MAN</p>
-                            <p>$13.25</p>
-                            <span class="discount">30%</span>
                             
+                        @foreach ($productos as $producto)
+            @php
+                $oferta = $producto->ofertas->descuento; // Porcentaje de oferta
+                $precioAnterior = $producto->precio;
+                $precioOferta = $oferta ? $precioAnterior - ($precioAnterior * ($oferta / 100)) : $precioAnterior;
+            @endphp
+            <li class="carousel-item">
+                <div class="card h-100 Productos position-relative">
+                    @if ($oferta >= 0)
+                        <div class="discount-badge">
+                            {{ $oferta }}% OFF
+                        </div>
+                    @endif
+                    <img class="card-img-top image" src="{{ asset('storage/' . $producto->imagen) }}" alt="...">
+                    <div class="card-body p-3">
+                        <div class="text-center">
+                            <h5 class="fw-bolder">{{ $producto->nombre }}</h5>
+                            @if ($oferta > 0)
+                                <div class="old-price">${{ $precioAnterior }}</div>
+                                <div class="precio">${{ number_format($precioOferta, 2) }}</div>
+                            @else
+                                <div class="precio">${{ number_format($precioAnterior, 2) }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                        <p class="ver-detalles">Ver detalles</p> <!-- Texto clickeable para mostrar detalles -->
+                        <div class="detalles">
+                        @if ($oferta > 0)
+                                <p>Descuento válido desde</p>
+                                <p>{{ $producto->ofertas->fecha_inicio }} al {{ $producto->ofertas->fecha_fin }}</p>
+                            @endif
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        @endforeach
                             
 
 
-                        </li>
+                  
 
-
-                        
-
-
-
-
-
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/godfall.jpg') }}" alt="Godfall">
-                            <p>GODFALL</p>
-                            <p>$6.25</p>
-                            <span class="discount">25%</span>
-                        </li>
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/allstars.jpg') }}" alt="Allstars">
-                            <p>ALLSTARS</p>
-                            <p>$9.25</p>
-                            <span class="discount">35%</span>
-                        </li>
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/morbld.jpg') }}" alt="Morbld">
-                            <p>MORBLD</p>
-                            <p>$3.25</p>
-                            <span class="discount">70%</span>
-                        </li>
                     </ul>
                     
                 </div>
@@ -101,25 +111,24 @@
                 <div class="carousel-track-container">
                     <ul class="carousel-track">
                         <li class="carousel-item">
-                            <img src="{{ asset('images/nfs.jpg') }}" alt="NFS Unbound Palace">
-                            <p>NFS UNBOUND PALACE</p>
-                            <p>$4.25</p>
+                                        {{-- Mostrar productos que son estrenos --}}
+                        @foreach ($estrenos as $estreno)
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100 Productos position-relative">
+                                    <div class="new-badge">New</div>
+                                    <img class="card-img-top image" src="{{ asset('storage/' . $estreno->imagen) }}" alt="...">
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <h5 class="fw-bolder">{{ $estreno->nombre }}</h5>
+                                            <div class="precio">${{ number_format($estreno->precio, 2) }}</div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                         </li>
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/dead_island.jpg') }}" alt="Dead Island 2">
-                            <p>DEAD ISLAND 2</p>
-                            <p>$7.50</p>
-                        </li>
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/suicide_squad.jpg') }}" alt="Suicide Squad">
-                            <p>SUICIDE SQUAD</p>
-                            <p>$13.25</p>
-                        </li>
-                        <li class="carousel-item">
-                            <img src="{{ asset('images/wo_long.jpg') }}" alt="Wo Long">
-                            <p>WO LONG</p>
-                            <p>$4.75</p>
-                        </li>
+                        
                     </ul>
                 </div>
                 <button class="carousel-button next" data-carousel="new-releases">&gt;</button>
@@ -144,5 +153,18 @@
     </footer>
     <!-- Enlaza el archivo JS -->
     <script src="{{ asset('js/scripts.js') }}"></script>
+    
 </body>
+<script>
+        // Script para mostrar/ocultar detalles al hacer clic en el texto
+        document.addEventListener('DOMContentLoaded', function () {
+            const verDetalles = document.querySelectorAll('.ver-detalles');
+            verDetalles.forEach(detalle => {
+                detalle.addEventListener('click', function () {
+                    const detalles = this.parentNode.querySelector('.detalles');
+                    detalles.style.display = detalles.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
 </html>

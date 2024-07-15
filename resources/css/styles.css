@@ -197,3 +197,61 @@ footer .social-icons a {
     text-decoration: none;
 }
 
+
+.card:hover {
+    transform: scale(1.05);
+	transition: transform 0.5s ease;
+}
+.card-img-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	border-radius: calc(0.375rem - 1px);
+  }
+
+
+
+  
+  .card.Productos .card-img,
+  .card-img-top,
+  .card-img-bottom {
+	width: 100px !important;
+	height: 300px !important;
+  }
+  
+  .card.Productos .card-img,
+  .card-img-top {
+	border-top-left-radius: calc(0.375rem - 1px) !important;
+	border-top-right-radius: calc(0.375rem - 1px) !important;
+    
+  }
+  
+  .card.Productos .card-img,
+  .card-img-bottom {
+	border-bottom-right-radius: calc(0.375rem - 1px) !important;
+	border-bottom-left-radius: calc(0.375rem - 1px) !important;
+    width: 100px !important;
+	height: 300px !important;
+  }
+  
+  .card-group > .card {
+	margin-bottom: 0.75rem !important;
+  }
+  .text-muted {
+	--bs-text-opacity: 1;
+	color: #6c757d !important;
+  }
+  .text-decoration-underline {
+	text-decoration: underline !important;
+  }
+  
+  .text-decoration-line-through {
+	text-decoration: line-through !important;
+  }
+  .btn .badge {
+    position: relative;
+    top: -1px;
+}
