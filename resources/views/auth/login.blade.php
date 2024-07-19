@@ -30,7 +30,7 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="{{asset('images/admin.jpg')}}"
+                  <img src="{{asset('images/consola.png')}}"
                     style="width: 185px;" alt="logo">
                   <h4 class="mt-1 mb-5 pb-1">Iniciar Sesión</h4>
                 </div>
