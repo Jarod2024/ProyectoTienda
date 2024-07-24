@@ -20,7 +20,8 @@ class ProductosResource extends Resource
 {
     protected static ?string $model = Productos::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static ?string $navigationGroup = 'Administrador de productos';
 
     public static function form(Form $form): Form
     {

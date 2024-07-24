@@ -18,7 +18,8 @@ class OfertasResource extends Resource
 {
     protected static ?string $model = Ofertas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-receipt-percent';
+    protected static ?string $navigationGroup = 'Administrador de productos';
 
     public static function form(Form $form): Form
     {

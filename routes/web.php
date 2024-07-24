@@ -32,7 +32,7 @@ Auth::routes();
 
 
 Livewire::setUpdateRoute(function($handle) {
-    return Route::post('/juegos/public/livewire/update', $handle);
+    return Route::post('/ProyectoWeb2.0/public/livewire/update', $handle);
 });
 
 

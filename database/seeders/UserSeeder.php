@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Hash;
         ]);
 
         // Obtencion del rol admin para asignar al usuario
-        $role = Role::findByName('admin');
+        $role = Role::findByName('Admin');
 
         $user->assignRole($role);
     }
