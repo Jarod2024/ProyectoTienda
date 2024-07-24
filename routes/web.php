@@ -11,6 +11,8 @@ use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Livewire;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +32,7 @@ Auth::routes();
 
 
 Livewire::setUpdateRoute(function($handle) {
-    return Route::post('/juegos/public/livewire/update', $handle);
+    return Route::post('/ProyectoWeb2.0/public/livewire/update', $handle);
 });
 
 

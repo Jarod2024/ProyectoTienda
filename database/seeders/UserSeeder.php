@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Hash;
         // Creacion de un nuevo usuario administrador
         $user = User::factory()->create([
             'name' => 'Admin',
-            'email' => 'admin@juegos.com',
-            'password' => Hash::make('123456789')
+            'email' => 'admin@juegos.com'
         ]);
 
         // Obtencion del rol admin para asignar al usuario
-        $role = Role::findByName('admin');
+        $role = Role::findByName('Admin');
 
         $user->assignRole($role);
     }
