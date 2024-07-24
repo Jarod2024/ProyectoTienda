@@ -70,4 +70,6 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
+Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
+Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
