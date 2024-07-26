@@ -11,6 +11,8 @@ use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Livewire;
 
 Route::get('/', function () {
     return view('welcome');
@@ -68,6 +70,8 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
+Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
+Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
 // Ruta de home accesible para todos los usuarios autenticados
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
