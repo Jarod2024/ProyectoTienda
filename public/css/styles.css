@@ -19,13 +19,10 @@ header .container {
     margin: 0 auto;
     padding: 0 20px;
     border: 10px solid #5DADE2;
-    border-radius: 15px;
-    /* Para bordes redondeados */
-    background-color: white;
-    /* Color del fondo */
+    border-radius: 15px; /* Para bordes redondeados */
+    background-color: white; /* Color del fondo */
     text-align: center;
 }
-
 .logo {
     flex: 1;
     text-align: center;
@@ -103,8 +100,7 @@ main {
     width: 300px;
 }
 
-.offers,
-.new-releases {
+.offers, .new-releases {
     margin-top: 40px;
     background-color: #fff;
     padding: 20px;
@@ -112,8 +108,7 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.offers h2,
-.new-releases h2 {
+.offers h2, .new-releases h2 {
     font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
