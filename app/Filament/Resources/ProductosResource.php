@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\Image;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Columns\ImageColumn;
+
 
 class ProductosResource extends Resource
 {
@@ -37,15 +39,15 @@ class ProductosResource extends Resource
                     ->numeric()
                     ->minValue(0),
                 Forms\Components\Select::make('plataforma_id')
-                    ->relationship('plataforma', 'nombre')
+                    ->relationship('plataforma', 'nombre') 
                     ->required(),
                 Forms\Components\Select::make('categoria_id')
                     ->relationship('categoria', 'nombre')
                     ->required(),
                 Forms\Components\FileUpload::make('imagen')
-                    ->image()
-                    ->directory('imagenes/productos')
-                    ->required(),
+                ->disk('public') // especificar el disco, por ejemplo, 'public'
+                ->directory('imagenes') // especificar el directorio dentro del disco
+                ->required(),
             ]);
     }
 
@@ -61,8 +63,7 @@ class ProductosResource extends Resource
                 ->searchable(),
             TextColumn::make('precio')
                 ->sortable()
-                ->searchable(),
-            
+                ->searchable(), 
             TextColumn::make('plataforma.nombre')
                 ->label('Plataforma')
                 ->sortable()
@@ -71,6 +72,11 @@ class ProductosResource extends Resource
                 ->label('Categoria')
                 ->sortable()
                 ->searchable(),
+                ImageColumn::make('imagen')
+                ->label('Imagen')
+                ->disk('public') // Especifica el disco público
+                ->sortable()
+                ->searchable(),  
         ])
         ->filters([
             // Define los filtros si es necesario

@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class comprobante extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name', 'email', 'Direccion', 'phone_number', 'year_of_birth',
-    ];
-
     public function carrito()
     {
-        return $this->hasOne(carrito::class);
+        return $this->belongsTo(Carrito::class, 'carrito_id');
     }
-}
+} 
