@@ -16,6 +16,7 @@ use Filament\Panel;
 class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable, HasRoles;
+    
 
     /**
      * The attributes that are mass assignable.
