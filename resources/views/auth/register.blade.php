@@ -35,58 +35,54 @@
                   <h4 class="mt-1 mb-5 pb-1">LOGIN</h4>
                 </div>
 
-                <form action="{{route('register')}}" method="post">
-                  @csrf
-                  <p>REGISTRO</p>
+                                <form action="{{route('register')}}" method="post">
+                    @csrf
+                    <p>REGISTRO</p>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example11">Nombre</label>  
-                  <input type="text" name="name" id="form2Example11" class="form-control"
-                      placeholder="Ingresar nombre" />
-                    </div>
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Fecha Nacimiento</label>  
-                      <input type="date" name="date" id="form2Example11" class="form-control"
-                          placeholder="Ingresar fecha" />
+                        <label class="form-label" for="name">Nombre</label>  
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Ingresar nombre" />
                     </div>
+
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Teléfono</label>  
-                      <input type="tel" name="phone" id="form2Example11" class="form-control"
-                          placeholder="Ingresar teléfono" />
+                        <label class="form-label" for="year_of_birth">Fecha Nacimiento</label>  
+                        <input type="date" name="year_of_birth" id="year_of_birth" class="form-control" placeholder="Ingresar fecha" />
                     </div>
+
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Dirección</label>  
-                      <input type="text" name="address" id="form2Example11" class="form-control"
-                          placeholder="Ingresar dirección" />
-                    </div>
-                  <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example11">Correo</label>  
-                  <input type="email" name="email" id="form2Example11" class="form-control"
-                      placeholder="Ingresar correo" />
+                        <label class="form-label" for="phone_number">Teléfono</label>  
+                        <input type="tel" name="phone_number" id="phone_number" class="form-control" placeholder="Ingresar teléfono" />
                     </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example22">Contraseña</label>  
-                  <input type="password" name="password" id="form2Example22" class="form-control" />
-                  </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="Direccion">Dirección</label>  
+                        <input type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Ingresar dirección" />
+                    </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                  <label class="form-label" for="form2Example22">Confirmar Contraseña</label>  
-                  <input type="password" name="password_confirmation" id="form2Example22" class="form-control" />
-                  </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="email">Correo</label>  
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Ingresar correo" />
+                    </div>
 
-                  <div class="text-center pt-1 mb-5 pb-1">
-                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrarse</button>
-        
-                  </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="password">Contraseña</label>  
+                        <input type="password" name="password" id="password" class="form-control" />
+                    </div>
 
-                  <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2">Ir a Login</p>
-                    <a href="{{route('login')}}" class="btn btn-outline-danger">Login</a>
-                  </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="password_confirmation">Confirmar Contraseña</label>  
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" />
+                    </div>
 
+                    <div class="text-center pt-1 mb-5 pb-1">
+                        <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrarse</button>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                        <p class="mb-0 me-2">Ir a Login</p>
+                        <a href="{{route('login')}}" class="btn btn-outline-danger">Login</a>
+                    </div>
                 </form>
-
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
