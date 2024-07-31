@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMMING ESPE</title>
     <!-- Enlaza el archivo CSS -->
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
     <header>
@@ -41,7 +41,7 @@
             <div class="welcome-text">
                 <h1>BIENVENIDO ENTRETENIMIENTO GAMMING</h1>
                 <p>Bienvenido al nuestro rincón virtual de entretenimiento gamming donde la emoción y la aventura se fusionan. La personas amantes de los video juegos tenemos variedad de productos que les puede interesar y muchos juegos de estreno.</p>
-                <a href="{{ route('videojuegos') }}" class="btn btn-primary mt-3">Ir al Dashboard</a> 
+                <button class="btn-primary" onclick="window.location.href='{{ route('videojuegos') }}'">Ver más videojuegos</button>
             </div>
             <div class="welcome-image">
                 <img src="{{ asset('images/controller.jpg') }}" alt="Game Controller">
@@ -67,7 +67,7 @@
                             {{ $oferta }}% OFF
                         </div>
                     @endif
-                    <img class="card-img-top image" src="{{ asset('storage/' . $producto->imagen) }}" alt="...">
+                    <img class="card-img-top  image" src="{{ asset('storage/' . $producto->imagen) }}" alt="...">
                     <div class="card-body p-3">
                         <div class="text-center">
                             <h5 class="fw-bolder">{{ $producto->nombre }}</h5>
@@ -99,9 +99,9 @@
                   
 
                     </ul>
-                    
+                    <button class="carousel-button next" data-carousel="offers">&gt;</button>
                 </div>
-                <button class="carousel-button next" data-carousel="offers">&gt;</button>
+                
             </div>
         </section>
         <section class="new-releases">
@@ -109,29 +109,26 @@
             <div class="carousel-container">
                 <button class="carousel-button prev" data-carousel="new-releases">&lt;</button>
                 <div class="carousel-track-container">
-                    <ul class="carousel-track">
-                        <li class="carousel-item">
-                                        {{-- Mostrar productos que son estrenos --}}
+                <ul class="carousel-track">
                         @foreach ($estrenos as $estreno)
-                            <div class="col-md-3 mb-4">
-                                <div class="card h-100 Productos position-relative">
-                                    <div class="new-badge">New</div>
-                                    <img class="card-img-top image" src="{{ asset('storage/' . $estreno->imagen) }}" alt="...">
-                                    <div class="card-body p-4">
-                                        <div class="text-center">
-                                            <h5 class="fw-bolder">{{ $estreno->nombre }}</h5>
-                                            <div class="precio">${{ number_format($estreno->precio, 2) }}</div>
-                                        </div>
-                                    </div>
-                                    </div>
+                        <li class="carousel-item">
+                            <div class="card h-100 Productos position-relative">
+                            <div class="new-badge">New</div>
+                            <img class="card-img-top image" src="{{ asset('storage/' . $estreno->imagen) }}" alt="...">
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                <h5 class="fw-bolder">{{ $estreno->nombre }}</h5>
+                                <div class="precio">${{ number_format($estreno->precio, 2) }}</div>
                                 </div>
                             </div>
-                        @endforeach
+                            </div>
                         </li>
-                        
-                    </ul>
+                        @endforeach
+                        </ul>
+
+                    <button class="carousel-button next" data-carousel="new-releases">&gt;</button>
                 </div>
-                <button class="carousel-button next" data-carousel="new-releases">&gt;</button>
+                
             </div>
         </section>
     </main>
@@ -155,16 +152,4 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     
 </body>
-<script>
-        // Script para mostrar/ocultar detalles al hacer clic en el texto
-        document.addEventListener('DOMContentLoaded', function () {
-            const verDetalles = document.querySelectorAll('.ver-detalles');
-            verDetalles.forEach(detalle => {
-                detalle.addEventListener('click', function () {
-                    const detalles = this.parentNode.querySelector('.detalles');
-                    detalles.style.display = detalles.style.display === 'block' ? 'none' : 'block';
-                });
-            });
-        });
-    </script>
 </html>
