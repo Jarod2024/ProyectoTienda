@@ -5,24 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class carrito extends Model
+class Carrito extends Model
 {
     use HasFactory;
-    // Relación con el usuario
-    
-    protected $fillable = ['cliente_id', 'producto_id', 'subtotal'];
-    
+
+    // Fillable attributes
+    protected $fillable = ['cliente_id', 'productos', 'total'];
+
+    // Casts for attributes
+    protected $casts = [
+        'productos' => 'array',
+        'total' => 'decimal:2',
+    ];
+
+    // Relationship with Cliente
     public function cliente()
     {
-        return $this->belongsTo(cliente::class, 'usuario_id');
+        return $this->belongsTo(Cliente::class, 'cliente_id');
     }
 
+    // Relationship with Producto (adjust as needed)
     public function producto()
     {
-        return $this->belongsTo(Productos::class);
-    } 
+        return $this->hasMany(Productos::class, 'id', 'productos'); // Adjust if needed based on how products are related
+    }
 
-    // Relación con el comprobante
+    // Relationship with Comprobante
     public function comprobante()
     {
         return $this->hasOne(Comprobante::class, 'carrito_id');
