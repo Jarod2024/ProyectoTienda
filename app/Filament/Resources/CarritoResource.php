@@ -75,14 +75,31 @@ class CarritoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->label('User Name'),
-                Tables\Columns\TextColumn::make('productos')->label('Products')->formatStateUsing(function ($state) {
-                    return json_encode($state); // Asegúrate de formatear el JSON para la vista de la tabla
-                }),
+                Tables\Columns\TextColumn::make('cliente.name')->label('Cliente'),
+                Tables\Columns\TextColumn::make('producto')
+                    ->label('Productos')
+                    ->formatStateUsing(function ($state) {
+                        // Decodifica el JSON
+                        $productosArray = json_decode($state, true);
+
+                        // Verifica si $productosArray es un array
+                        if (is_array($productosArray)) {
+                            return collect($productosArray)
+                                ->map(function ($producto) {
+                                    if (is_array($producto) && isset($producto['producto_id'])) {
+                                        $productoModel = Productos::find($producto['producto_id']);
+                                        return $productoModel ? $productoModel->nombre . ' (Cantidad: ' . $producto['cantidad'] . ')' : 'Desconocido';
+                                    }
+                                    return 'Datos inválidos'; // Manejo de datos inesperados
+                                })
+                                ->join(', ');
+                        }
+                        return 'N/A'; // Valor de reserva en caso de datos inesperados
+                    }),
                 Tables\Columns\TextColumn::make('total')->label('Total'),
             ])
             ->filters([
-                //
+                // Define los filtros si es necesario
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -95,7 +112,7 @@ class CarritoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // Define relationships if needed
         ];
     }
 

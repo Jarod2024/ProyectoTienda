@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('carritos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();
-            $table->text('productos'); // Columna para almacenar los productos y cantidades en formato JSON
+            $table->json('productos'); // Columna para almacenar los productos y cantidades en formato JSON
             $table->decimal('total', 10, 2)->default(0.00); // Columna para el total del carrito
             $table->timestamps();
         });
