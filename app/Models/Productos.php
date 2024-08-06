@@ -26,4 +26,11 @@ class productos extends Model
         return $this->belongsTo(Categoria::class);
     }
     
+    protected $fillable = ['nombre', 'precio'];
+    public function carrito()
+    {
+        return $this->belongsTo(carrito::class,);
+    }
+    
+     
 }

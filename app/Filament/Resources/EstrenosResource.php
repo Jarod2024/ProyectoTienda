@@ -22,6 +22,7 @@ class EstrenosResource extends Resource
     protected static ?string $model = Estrenos::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Administrador de productos';
 
     public static function form(Form $form): Form
     {

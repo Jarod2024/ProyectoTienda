@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CustomerResource\Pages;
-use App\Filament\Resources\CustomerResource\RelationManagers;
-use App\Models\Customer;
+use App\Filament\Resources\ComprobanteResource\Pages;
+use App\Filament\Resources\ComprobanteResource\RelationManagers;
+use App\Models\Comprobante;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CustomerResource extends Resource
+class ComprobanteResource extends Resource
 {
-    protected static ?string $model = Customer::class;
+    protected static ?string $model = Comprobante::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -56,9 +56,9 @@ class CustomerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCustomers::route('/'),
-            'create' => Pages\CreateCustomer::route('/create'),
-            'edit' => Pages\EditCustomer::route('/{record}/edit'),
+            'index' => Pages\ListComprobantes::route('/'),
+            'create' => Pages\CreateComprobante::route('/create'),
+            'edit' => Pages\EditComprobante::route('/{record}/edit'),
         ];
     }
 }

@@ -17,7 +17,9 @@ class PlataformaResource extends Resource
 {
     protected static ?string $model = Plataforma::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationGroup = 'Administrador de productos';
+
 
     public static function form(Form $form): Form
     {
