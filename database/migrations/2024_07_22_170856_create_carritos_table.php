@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();
             $table->json('productos'); // Columna para almacenar los productos y cantidades en formato JSON
-            $table->decimal('total', 10, 2)->default(0.00); // Columna para el total del carrito
+            $table->decimal('total', 10, 2); // Columna para el total del carrito
             $table->timestamps();
         });
     }
