@@ -5,6 +5,8 @@ namespace App\Providers\Filament;
 use App\Filament\Widgets\TestWidget;
 use App\Filament\Widgets\TestWidget2;
 use App\Filament\Widgets\TestChartWidget;
+use App\Filament\Widgets\ProductosChartWidget;
+use App\Filament\Widgets\PlatasformasCategoriasChartWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -38,6 +40,8 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Yellow,
             ])
             ->font('Times New Roman')
+            ->brandLogo(asset('images/logo.jpg'))
+            ->favicon(asset('images/logo.jpg'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -47,7 +51,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 TestWidget::class,
                 TestChartWidget::class,
+                ProductosChartWidget::class,
+                PlatasformasCategoriasChartWidget::class,
                 TestWidget2::class,
+                
             ])
             ->middleware([
                 EncryptCookies::class,
