@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->id();php artisan migrate --path=/database/migrations/2024_08_12_003453_create_product_table.php
-
+            $table->id();
+            $table->string('name');
             $table->string('description');
             $table->string('price');
             $table->string('platform');
