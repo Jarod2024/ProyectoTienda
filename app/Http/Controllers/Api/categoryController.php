@@ -31,10 +31,10 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'slug' => 'required|string',
-            'platform' => 'required|string'
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'slug' => 'required',
+            'platform' => 'required|in:Xbox,PS4,PS5,Switch,Windows,Mac,Mobile'
         ]);
 
         if ($validator->fails()) {
@@ -68,6 +68,145 @@ class categoryController extends Controller
 
         return response()->json($data, 201);
 
+    }
+
+    public function show($id)
+    {
+        $category = Category::find($id);
+
+        if(!$category){
+            $data = [
+                'message' => 'Categoria no encontrada',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'category' => $category,
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        if(!$category){
+            $data = [
+                'message' => 'Categoria no encontrada',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $category->delete();
+
+        $data = [
+            'message' => 'Categoria eliminada',
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+
+        if(!$category){
+            $data = [
+                'message' => 'Categoria no encontrada',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'slug' => 'required',
+            'platform' => 'required|in:Xbox,PS4,PS5,Switch,Windows,Mac,Mobile'
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                'message' => 'Error en la validación de los datos',
+                'errors' => $validator->errors(),
+                'status' => 400
+            ];
+            return response()->json($data, 400);
+        }
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->slug = $request->slug;
+        $category->platform = $request->platform;
+
+        $category->save();
+
+        $data = [
+            'category' => $category,
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function updatePartial(Request $request, $id)
+    {
+        $category = Category::find($id);
+
+        if(!$category){
+            $data = [
+                'message' => 'Categoria no encontrada',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'max:255',
+            'description' => 'max:255',
+            'slug' => 'max:255',
+            'platform' => 'in:Xbox,PS4,PS5,Switch,Windows,Mac,Mobile'
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                'message' => 'Error en la validación de los datos',
+                'errors' => $validator->errors(),
+                'status' => 400
+            ];
+            return response()->json($data, 400);
+        }
+
+        if($request->name){
+            $category->name = $request->name;
+        }
+
+        if($request->description){
+            $category->description = $request->description;
+        }
+        
+        if ($request->slug) {
+            $category->slug = $request->slug;
+        }
+
+        if($request->platform){
+            $category->platform = $request->platform;
+        }
+
+        $category->save();
+
+        $data = [
+            'category' => $category,
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
     }
     
 }

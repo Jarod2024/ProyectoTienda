@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\categoryController;
 
 Route::get('/categories', [categoryController::class,'index']);
 
-
 Route::get('/categories/{id}',[categoryController::class,'show']);
 
 Route::post('/categories', [categoryController::class,'store']);
