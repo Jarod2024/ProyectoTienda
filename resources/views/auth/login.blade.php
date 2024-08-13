@@ -20,14 +20,14 @@
   </head>
 
   <body>
-    <section class="h-100 gradient-form" style="background-color: #b43b3b;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
-        <div class="card rounded-3 text-black">
-          <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+    <section class="h-100 gradient-form" style="background-color: #f0e4e4; background-image: url('{{asset('images/Fondo1.jpg')}}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black" style="background-color: rgba(255, 255, 255, 0.6); margin-top: 110px;"> <!-- Ajusta el margin-top para mover el contenedor hacia abajo -->
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
                   
@@ -41,13 +41,14 @@
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example11">Correo</label>  
                   <input type="email" name="email" id="form2Example11" class="form-control"
-                      placeholder="Ingresar correo" />
+                      placeholder="Ingresar Correo" />
                     
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example22">Contraseña</label>  
-                  <input type="password" name="password" id="form2Example22" class="form-control" />
+                  <input type="password" name="password" id="form2Example22" class="form-control" 
+                  placeholder="Ingresar Contraseña" />
                     
                   </div>
 
@@ -68,8 +69,10 @@
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <img src="{{asset('images/consola.png')}}"
-                style="width: 185px;" alt="logo">
+                <img src="{{asset('images/Fondo.jpg')}}"
+     style="width: 100%; max-width: 450px; height: auto; border-radius: 15px; box-shadow: 0px 4px 15px rgba(156, 131, 164, 0.1); display: block; margin: 0 auto;"
+     alt="logo">
+
               </div>
             </div>
           </div>
