@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comprobantes', function (Blueprint $table) {
+        Schema::create('detalles_carritos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
             $table->foreignId('carrito_id')->constrained('carritos')->onDelete('cascade');
-            $table->timestamp('fecha')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->decimal('monto_total', 8, 2);
-            $table->string('estado');
+            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
+            $table->integer('cantidad');
+            $table->decimal('precio', 10, 2); // Ajusta el tipo de dato si es necesario
+            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
+            
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comprobantes');
+        Schema::dropIfExists('detalles_carritos');
     }
 };
