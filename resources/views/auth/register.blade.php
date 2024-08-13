@@ -21,10 +21,10 @@
 
   <body>
     <section class="h-100 gradient-form" style="background-color: #f0e4e4; background-image: url('{{asset('images/Fondo1.jpg')}}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
-      <div class="container py-5 h-100 d-flex justify-content-center align-items-center">
+      <div class="container py-3 h-90 d-flex justify-content-center align-items-center">
         <div class="row d-flex justify-content-center align-items-center w-100">
-          <div class="col-xl-10">
-            <div class="card rounded-3 text-black" style="background-color: rgba(255, 255, 255, 0.7); padding-top: 20px; padding-bottom: 20px;"> <!-- Ajusta la transparencia según sea necesario -->
+          <div class="col-xl-12">
+            <div class="card rounded-3 text-black" style="background-color: rgba(255, 255, 255, 0.7); padding-left:20px; padding-right: 20px; margin: 0 auto;"> <!-- Ajusta la transparencia según sea necesario -->
               <div class="row g-0">
                 <div class="col-lg-6">
                   <div class="card-body p-md-5 mx-md-4">
@@ -68,11 +68,11 @@
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" />
                       </div>
   
-                      <div class="text-center pt-1 mb-5 pb-1">
+                      <div class="text-center mb-4">
                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrarse</button>
                       </div>
   
-                      <div class="d-flex align-items-center justify-content-center pb-4">
+                      <div class="d-flex align-items-center justify-content-center">
                         <p class="mb-0 me-2">Ir a Login</p>
                         <a href="{{route('login')}}" class="btn btn-outline-danger">Login</a>
                       </div>
