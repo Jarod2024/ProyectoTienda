@@ -3,15 +3,17 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ComprobanteResource\Pages;
-use App\Filament\Resources\ComprobanteResource\RelationManagers;
 use App\Models\Comprobante;
+use App\Models\Cliente;
+use App\Models\Carrito;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 
 class ComprobanteResource extends Resource
 {
@@ -22,8 +24,58 @@ class ComprobanteResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
+        ->schema([
+            Select::make('cliente_id')
+                ->label('Cliente')
+                ->relationship('cliente', 'name')
+                ->required()
+                ->reactive()
+                ->afterStateUpdated(function ($state, callable $set) {
+                    // Filtrar carritos según el cliente seleccionado
+                    $carritos = Carrito::where('cliente_id', $state)->get();
+
+                    // Establecer opciones de carritos en el campo de selección
+                    $set('carrito_id', $carritos->pluck('id', 'id')->toArray());
+                }),
+
+            Select::make('carrito_id')
+                ->label('Carrito')
+                ->required()
+                ->options(function (callable $get) {
+                    // Obtener los carritos disponibles para el cliente seleccionado
+                    $clienteId = $get('cliente_id');
+                    if ($clienteId) {
+                        return Carrito::where('cliente_id', $clienteId)->pluck('id', 'id');
+                    }
+                    return [];
+                })
+                ->reactive()
+                ->afterStateUpdated(function ($state, callable $set) {
+                    // Calcular y establecer el monto total para el carrito seleccionado
+                    $carrito = Carrito::find($state);
+                    if ($carrito) {
+                        $total = $carrito->detalles->sum('subtotal');
+                        $set('monto_total', $total);
+                    }
+                }),
+
+            TextInput::make('monto_total')
+                ->label('Monto Total')
+                ->required()
+                ->numeric(),
+            Select::make('estado')
+                ->label('Estado')
+                ->options([
+                    'pendiente' => 'Pendiente',
+                    'pagado' => 'Pagado',
+                    'cancelado' => 'Cancelado',
+                ])
+                ->default('pendiente')
+                ->required(),
+            
+
+                
+
             ]);
     }
 
@@ -31,25 +83,32 @@ class ComprobanteResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('cliente.name')->label('Cliente'),
+                Tables\Columns\TextColumn::make('carritos')
+                    ->label('Carritos')
+                    ->formatStateUsing(function ($state) {
+                        // Decodificar el JSON de carritos y mostrar la información
+                        return collect($state)->map(function ($carrito) {
+                            return 'Carrito ID: ' . $carrito['id'] . ' (Total: ' . $carrito['total'] . ')';
+                        })->join(', ');
+                    }),
+                Tables\Columns\TextColumn::make('total')->label('Total'),
             ])
             ->filters([
-                //
+                // Define los filtros si es necesario
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            // Define the relations if needed
         ];
     }
 

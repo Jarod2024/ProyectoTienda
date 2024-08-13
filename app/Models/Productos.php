@@ -27,9 +27,9 @@ class productos extends Model
     }
     
     protected $fillable = ['nombre', 'precio'];
-    public function carrito()
+    public function detallesCarritos()
     {
-        return $this->belongsTo(carrito::class,);
+        return $this->hasMany(DetallesCarrito::class, 'producto_id');
     }
     
      

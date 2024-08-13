@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'name', 'email', 'Direccion', 'phone_number', 'year_of_birth',
     ];
@@ -15,5 +16,9 @@ class Cliente extends Model
     public function carrito()
     {
         return $this->hasOne(carrito::class);
+    }
+    public function cliente()
+    {
+        return $this->hasOne(cliente::class);
     }
 }
