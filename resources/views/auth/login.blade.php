@@ -30,8 +30,7 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="{{asset('images/consola.png')}}"
-                    style="width: 185px;" alt="logo">
+                  
                   <h4 class="mt-1 mb-5 pb-1">Iniciar Sesión</h4>
                 </div>
 
@@ -69,10 +68,8 @@
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">BIENVENIDO ENTRETENIMIENTO GAMMING</h4>
-                <p class="small mb-0">Bienvenido al nuestro rincón virtual de entretenimiento 
-                  gamming donde la emoción y la aventura se fusionan. La personas amantes de los video 
-                  juegos tenemos variedad de productos que les puede interesar y muchos juegos de estreno..</p>
+                <img src="{{asset('images/consola.png')}}"
+                style="width: 185px;" alt="logo">
               </div>
             </div>
           </div>
