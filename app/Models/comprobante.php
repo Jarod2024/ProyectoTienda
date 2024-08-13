@@ -8,8 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class comprobante extends Model
 {
     use HasFactory;
-    public function carrito()
+
+    protected $fillable = [
+        'cliente_id',
+        'carrito_id',
+        'fecha',
+        'monto_total',
+        'estado',
+    ];
+    public function cliente()
     {
-        return $this->belongsTo(Carrito::class, 'carrito_id');
+        return $this->belongsTo(Cliente::class);
+    }
+
+    // Relación con los carritos
+    public function carritos()
+    {
+        return $this->hasMany(Carrito::class);
+    }
+    public function calcularTotal()
+    {
+        return $this->carritos()->sum('total');
     }
 } 

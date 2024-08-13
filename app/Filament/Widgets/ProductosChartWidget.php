@@ -1,15 +1,13 @@
 <?php
-
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class TestChartWidget extends ChartWidget
+class ProductosChartWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Estadísticas de Clientes';
+    protected static ?string $heading = 'Estadísticas de Productos';
 
     /**
      * Verifica si el widget debe ser visible para el usuario actual.
@@ -29,8 +27,8 @@ class TestChartWidget extends ChartWidget
      */
     protected function getData(): array
     {
-        // Datos de clientes
-        $clientesData = DB::table('clientes')
+        // Datos de productos
+        $productosData = DB::table('productos')
             ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as count'))
             ->whereYear('created_at', now()->year)
             ->groupBy(DB::raw('MONTH(created_at)'))
@@ -39,15 +37,16 @@ class TestChartWidget extends ChartWidget
             ->toArray();
 
         // Asegúrate de que haya 12 meses en los datos
-        $monthlyClientesData = array_replace(array_fill(1, 12, 0), $clientesData);
+        $monthlyProductosData = array_replace(array_fill(1, 12, 0), $productosData);
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Clientes registrados',
-                    'data' => array_values($monthlyClientesData),
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
+                    'label' => 'Productos registrados',
+                    'data' => array_values($monthlyProductosData),
+                    'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
+                    'borderColor' => 'rgba(255, 99, 132, 1)',
+                    'borderWidth' => 1,
                 ],
             ],
             'labels' => ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
@@ -61,6 +60,6 @@ class TestChartWidget extends ChartWidget
      */
     protected function getType(): string
     {
-        return 'line'; // Puedes cambiar esto a 'bar', 'pie', etc.
+        return 'bar'; // Cambiado a 'bar' para gráfico de barras
     }
 }
