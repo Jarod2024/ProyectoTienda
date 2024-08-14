@@ -81,8 +81,8 @@
                 </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <img src="{{asset('images/Fondo.jpg')}}"
-     style="width: 100%; max-width: 450px; height: auto; border-radius: 15px; box-shadow: 0px 4px 15px rgba(156, 131, 164, 0.1); display: block; margin: 0 auto;"
+                <img src="{{asset('images/Logo1.jpg')}}"
+      style="width: 100%; max-width: 400px; height: 400px; border-radius: 50%; box-shadow: 0px 4px 15px rgba(156, 131, 164, 0.1); display: block; margin: 0 auto; object-fit: cover;"
      alt="logo">
               </div>
             </div>
