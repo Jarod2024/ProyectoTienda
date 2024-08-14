@@ -29,8 +29,8 @@ class TestChartWidget extends ChartWidget
      */
     protected function getData(): array
     {
-        // Consulta los datos directamente desde la base de datos
-        $data = DB::table('clientes')
+        // Datos de clientes
+        $clientesData = DB::table('clientes')
             ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as count'))
             ->whereYear('created_at', now()->year)
             ->groupBy(DB::raw('MONTH(created_at)'))
@@ -39,13 +39,15 @@ class TestChartWidget extends ChartWidget
             ->toArray();
 
         // Asegúrate de que haya 12 meses en los datos
-        $monthlyData = array_replace(array_fill(1, 12, 0), $data);
+        $monthlyClientesData = array_replace(array_fill(1, 12, 0), $clientesData);
 
         return [
             'datasets' => [
                 [
                     'label' => 'Clientes registrados',
-                    'data' => array_values($monthlyData),
+                    'data' => array_values($monthlyClientesData),
+                    'borderColor' => 'rgba(75, 192, 192, 1)',
+                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
                 ],
             ],
             'labels' => ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CarritoResource\Pages;
 use App\Models\Carrito;
 use App\Models\Productos;
+use App\Models\Cliente;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,49 +26,10 @@ class CarritoResource extends Resource
         return $form
             ->schema([
                 Select::make('cliente_id')
-                    ->relationship('cliente', 'name')
-                    ->required(),
-                Repeater::make('productos')
-                    ->schema([
-                        Select::make('producto_id')
-                            ->label('Producto')
-                            ->relationship('producto', 'nombre')
-                            ->required()
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $producto = Productos::find($state);
-                                if ($producto) {
-                                    $set('precio', $producto->precio);
-                                    $cantidad = $get('cantidad') ?? 1;
-                                    $set('subtotal', $cantidad * $producto->precio);
-                                }
-                            }),
-                        TextInput::make('cantidad')
-                            ->numeric()
-                            ->default(1)
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $precio = $get('precio');
-                                if ($precio) {
-                                    $set('subtotal', $state * $precio);
-                                }
-                            }),
-                        TextInput::make('precio')
-                            ->disabled()
-                            ->numeric(),
-                        TextInput::make('subtotal')
-                            ->disabled()
-                            ->numeric(),
-                    ])
-                    ->columns(4)
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        $total = collect($state)->sum('subtotal');
-                        $set('total', $total);
-                    }),
-                TextInput::make('total')
-                    ->label('Total')
-                    ->disabled()
-                    ->numeric(),
+                ->label('Cliente')
+                ->relationship('cliente', 'name') // Usa 'name' si tu modelo Usuario tiene un campo 'name'
+                ->required(),
+                
             ]);
     }
 
@@ -75,28 +37,12 @@ class CarritoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('cliente.name')->label('Cliente'),
-                Tables\Columns\TextColumn::make('producto')
-                    ->label('Productos')
-                    ->formatStateUsing(function ($state) {
-                        // Decodifica el JSON
-                        $productosArray = json_decode($state, true);
-
-                        // Verifica si $productosArray es un array
-                        if (is_array($productosArray)) {
-                            return collect($productosArray)
-                                ->map(function ($producto) {
-                                    if (is_array($producto) && isset($producto['producto_id'])) {
-                                        $productoModel = Productos::find($producto['producto_id']);
-                                        return $productoModel ? $productoModel->nombre . ' (Cantidad: ' . $producto['cantidad'] . ')' : 'Desconocido';
-                                    }
-                                    return 'Datos inválidos'; // Manejo de datos inesperados
-                                })
-                                ->join(', ');
-                        }
-                        return 'N/A'; // Valor de reserva en caso de datos inesperados
-                    }),
-                Tables\Columns\TextColumn::make('total')->label('Total'),
+            Tables\Columns\TextColumn::make('Cliente.name') // Muestra el nombre del usuario en la tabla
+                ->label('Cliente'),
+            Tables\Columns\TextColumn::make('fecha_creacion')
+                ->label('Fecha de Creación')
+                ->dateTime(),
+                
             ])
             ->filters([
                 // Define los filtros si es necesario

@@ -43,8 +43,11 @@
                 <p>Bienvenido al nuestro rincón virtual de entretenimiento gamming donde la emoción y la aventura se fusionan. La personas amantes de los video juegos tenemos variedad de productos que les puede interesar y muchos juegos de estreno.</p>
                 <button class="btn-primary" onclick="window.location.href='{{ route('videojuegos') }}'">Ver más videojuegos</button>
             </div>
-            <div class="welcome-image">
-                <img src="{{ asset('images/controller.jpg') }}" alt="Game Controller">
+            <div class="welcome-image-section">
+                <div class="welcome-image">
+                    <img src="https://cdn.lotuselectronics.com/webpimages/489441IM.webp" alt="Game Controller">
+                </div>
+                <div class="welcome-background-image-section"></div>
             </div>
         </section>
         <section class="offers">

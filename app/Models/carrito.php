@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Carrito extends Model
 {
     use HasFactory;
+   
 
     // Fillable attributes
-    protected $fillable = ['cliente_id', 'productos', 'total'];
-
-    // Casts for attributes
-    protected $casts = [
-        'productos' => 'array',
-        'total' => 'decimal:2',
+    protected $fillable = [
+        'cliente_id',
+        'fecha_creacion',
     ];
+
+    
 
     // Relationship with Cliente
     public function cliente()
@@ -29,10 +29,10 @@ class Carrito extends Model
     {
         return $this->hasMany(Productos::class, 'id', 'productos'); // Adjust if needed based on how products are related
     }
-
-    // Relationship with Comprobante
-    public function comprobante()
+    
+    public function detalles()
     {
-        return $this->hasOne(Comprobante::class, 'carrito_id');
+    return $this->hasMany(DetallesCarrito::class);
     }
+    
 }

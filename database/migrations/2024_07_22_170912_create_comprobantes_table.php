@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('comprobantes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('carrito_id')->constrained('carritos')->cascadeOnDelete();
-            $table->decimal('total', 10, 2); // Total del comprobante
-            $table->string('estado')->default('pendiente'); // Estado del comprobante
+            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
+            $table->foreignId('carrito_id')->constrained('carritos')->onDelete('cascade');
+            $table->timestamp('fecha')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->decimal('monto_total', 8, 2);
+            $table->string('estado');
             $table->timestamps();
         });
     }
