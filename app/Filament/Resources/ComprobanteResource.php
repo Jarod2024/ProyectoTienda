@@ -84,8 +84,8 @@ class ComprobanteResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('cliente.name')->label('Cliente'),
-                Tables\Columns\TextColumn::make('carrito_id') ->label('Carritos'),
-
+                Tables\Columns\TextColumn::make('carrito_id')->label('Carrito'),
+                    
                 Tables\Columns\TextColumn::make('monto_total')->label('Total'),
             ])
             ->filters([

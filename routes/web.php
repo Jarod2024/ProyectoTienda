@@ -75,12 +75,6 @@ Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
 
-Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
-Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
-
-Route::get('/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
-Route::post('/plataformas/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
-Route::post('/categorias/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
 // routes/web.php
 Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
 Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
