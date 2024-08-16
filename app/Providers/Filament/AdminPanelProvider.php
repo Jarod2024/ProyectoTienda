@@ -40,8 +40,8 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Yellow,
             ])
             ->font('Times New Roman')
-            ->brandLogo(asset('images/logo.jpg'))
-            ->favicon(asset('images/logo.jpg'))
+            ->brandLogo(asset('images/Logo3.jpg'))
+            ->favicon(asset('images/Logo3.jpg'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

@@ -84,15 +84,9 @@ class ComprobanteResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('cliente.name')->label('Cliente'),
-                Tables\Columns\TextColumn::make('carritos')
-                    ->label('Carritos')
-                    ->formatStateUsing(function ($state) {
-                        // Decodificar el JSON de carritos y mostrar la información
-                        return collect($state)->map(function ($carrito) {
-                            return 'Carrito ID: ' . $carrito['id'] . ' (Total: ' . $carrito['total'] . ')';
-                        })->join(', ');
-                    }),
-                Tables\Columns\TextColumn::make('total')->label('Total'),
+                Tables\Columns\TextColumn::make('carrito_id')->label('Carrito'),
+                    
+                Tables\Columns\TextColumn::make('monto_total')->label('Total'),
             ])
             ->filters([
                 // Define los filtros si es necesario
