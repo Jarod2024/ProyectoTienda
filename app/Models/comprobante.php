@@ -22,10 +22,7 @@ class comprobante extends Model
     }
 
     // Relación con los carritos
-    public function carritos()
-    {
-        return $this->hasMany(Carrito::class);
-    }
+ 
     public function calcularTotal()
     {
         return $this->carritos()->sum('total');

@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
+use App\Http\Controllers\OrdenController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 
@@ -73,8 +74,13 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
-Livewire::setUpdateRoute(function($handle) {
-    return Route::post('/ProyectoTienda/public/livewire/update', $handle);
-});
+
 Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
+
+Route::get('/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
+Route::post('/plataformas/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
+Route::post('/categorias/generar-orden', [OrdenController::class, 'showOrdenForm'])->name('orden');
+// routes/web.php
+Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
+Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
