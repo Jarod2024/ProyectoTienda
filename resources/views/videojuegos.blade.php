@@ -15,7 +15,7 @@
                 $precioOferta = $oferta ? $precioAnterior - ($precioAnterior * ($oferta / 100)) : $precioAnterior;
             @endphp
             <div class="col-md-3 mb-4">
-                <div class="card h-100 Productos position-relative">
+                <div class="card h-100 Productos position-relative" data-id="{{ $producto->id }}">
                     @if ($oferta >= 0)
                         <div class="discount-badge">
                             {{ $oferta }}% OFF
@@ -43,7 +43,7 @@
                                 <p>{{ $producto->ofertas->fecha_inicio }} al {{ $producto->ofertas->fecha_fin }}</p>
                             @endif
                                 </div>
-                            <a href="#" class="btn btn-outline-dark mt-auto">Añadir al carrito</a>
+                            <a  class="btn btn-outline-dark mt-auto">Añadir al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
     {{-- Mostrar productos que son estrenos --}}
         @foreach ($estrenos as $estreno)
             <div class="col-md-3 mb-4">
-                <div class="card h-100 Productos position-relative">
+                <div class="card h-100 Productos position-relative" data-id="{{ $producto->id }}">
                     <div class="new-badge">New</div>
                     <img class="card-img-top image" src="{{ asset('storage/' . $estreno->imagen) }}" alt="...">
                     <div class="card-body p-4">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
-                            <a href="#" class="btn btn-outline-dark mt-auto">Añadir al carrito</a>
+                            <a class="btn btn-outline-dark mt-auto">Añadir al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -85,4 +85,5 @@
             });
         });
     </script>
+    
 @endsection

@@ -25,12 +25,12 @@ class Carrito extends Model
     }
 
     // Relationship with Producto (adjust as needed)
-    public function producto()
+    public function Comprobante()
     {
-        return $this->hasMany(Productos::class, 'id', 'productos'); // Adjust if needed based on how products are related
+        return $this->hasOne(comprobante::class, 'id', 'productos'); // Adjust if needed based on how products are related
     }
     
-    public function detalles()
+    public function detallesCarrito()
     {
     return $this->hasMany(DetallesCarrito::class);
     }

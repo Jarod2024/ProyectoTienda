@@ -563,4 +563,30 @@ footer .social-icons img {
     text-align: center !important;
     cursor: pointer !important;
 }
-/*CSS para valoración con estrellas*/
+/*Carrito*/
+.container-cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.custom-counter {
+    font-size: 15px; /* Ajusta el tamaño del texto del contador */
+    background-color: #ff0000; /* Cambia el color de fondo si lo deseas */
+    color: #ffffff; /* Cambia el color del texto */
+    padding: 2px 8px; /* Ajusta el tamaño del contenedor */
+    border-radius: 50%; /* Haz que el contador sea circular */
+    position: relative;
+    top: 10px; /* Ajusta la posición vertical del contador */
+    left: -10px; /* Ajusta la posición horizontal del contador */
+}
+.header-box {
+    padding: 10px;
+    background-color: #f8f9fa; /* Color de fondo del rectángulo */
+    border: 1px solid #ddd; /* Color del borde del rectángulo */
+    border-radius: 4px; /* Bordes redondeados */
+}
+.header-box h2 {
+    margin: 0;
+    color: #333; /* Color del texto del encabezado */
+}
