@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- C:\xampp\htdocs\juegos\resources\views\auth\register.blade.php -->
 <html lang="es">
   <head>
     <title>Title</title>
