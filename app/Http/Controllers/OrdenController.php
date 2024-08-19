@@ -8,6 +8,7 @@ use App\Models\Plataforma;
 use App\Models\carrito;
 use App\Models\Cliente;
 use App\Models\DetallesCarrito;
+use App\Models\comprobante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -80,7 +81,7 @@ class OrdenController extends Controller
         // Obtener el carrito junto con los detalles del carrito, productos, y el cliente
         $carrito = carrito::with('detallesCarrito.producto') // Carga las relaciones necesarias
                           ->findOrFail($carrito_id);
-    
+                          $total=0;
         // Obtener el cliente asociado al carrito
         $user = $carrito->cliente; // Almacena el cliente en la variable $user
         $categorias = Categoria::all(); 
@@ -90,7 +91,8 @@ class OrdenController extends Controller
             'carrito' => $carrito,
             'user' => $user,
             'categorias' => $categorias,
-        'plataformas' => $plataformas
+        'plataformas' => $plataformas,
+        'total'=> $total
         ]);
     }
     public function showOrdenForm(Request $request)
@@ -104,5 +106,41 @@ class OrdenController extends Controller
         $carrito = json_decode($request->session()->get('carrito', '[]')); // Retrieve the cart from session or however you store it
     
         return view('orden', compact('user', 'carrito','plataformas', 'categorias', 'productos'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'cliente_id' => 'required|integer|exists:clientes,id',
+            'carrito_id' => 'required|integer|exists:carritos,id',
+            'monto_total' => 'required|numeric',
+            'cod_transferencia' => 'required|string',
+        ]);
+    
+        try {
+            // Registrar los datos que se reciben
+            Log::info('Datos recibidos para agregar el comprobante:', $request->all());
+    
+            // Crear una nueva entrada en comprobantes
+            $comprobante = new Comprobante();
+            $comprobante->cliente_id = $request->input('cliente_id');
+            $comprobante->carrito_id = $request->input('carrito_id');
+            $comprobante->fecha = Carbon::now();
+            $comprobante->monto_total = $request->input('monto_total');
+            $comprobante->estado = 'Pendiente'; // O el estado que necesites
+            $comprobante->cod_transferencia = $request->input('cod_transferencia');
+            $comprobante->save();
+    
+            // Verificar si el comprobante se guardó
+            Log::info('Comprobante creado exitosamente con ID: ' . $comprobante->id);
+    
+            // Redirigir a la ruta de historial
+            return redirect()->route('historial')->with('success', 'Comprobante creado exitosamente.');
+    
+        } catch (Exception $e) {
+            // Manejo del error y registro
+            Log::error('Error al crear el comprobante: ' . $e->getMessage());
+            return response()->json(['message' => 'Error al crear el comprobante.'], 500);
+        }
     }
 }

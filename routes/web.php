@@ -12,6 +12,8 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\OrdenController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\HistorialController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -89,4 +91,7 @@ Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])-
 // routes/web.php
 Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
 Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
-
+Route::get('/orden/{carrito_id}/descargar', [PDFController::class, 'generarPdf'])->name('descargar');
+Route::post('/comprobante', [OrdenController::class, 'Store'])->name('comprobante');
+Route::get('/historial', [HistorialController::class, 'mostrarHistorial'])->name('historial');
+Route::get('/descargas', [PDFController::class, 'mostrarHistorial'])->name('comprobantes');

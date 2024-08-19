@@ -35,57 +35,95 @@
         </nav>
 
         <!-- Sidebar -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="{{ url('/') }}" class="brand-link">
-                <i class="fas fa-angle-double-left"></i>
-                <span class="brand-text font-weight-light">  go to Home</span>
-            </a>
-            <div class="sidebar">
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-header">VIDEOJUEGOS</li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Plataformas
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Logo -->
+    <a href="{{ url('/') }}" class="brand-link">
+    <img src="{{asset('images/Logo1.jpg')}}"
+                     style="width: 100%; max-width: 150px; height: 130px; border-radius: 50%; box-shadow: 0px 4px 15px rgba(156, 131, 164, 0.1); display: block; margin: 0 auto; object-fit: cover;"
+                     alt="logo">
+    </a>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <!-- Options under the logo -->
+                <li class="nav-item">
+                    <a href="{{ url('historial') }}" class="nav-link">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>Mis órdenes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('descargas') }}" class="nav-link">
+                        <i class="nav-icon fas fa-download"></i>
+                        <p>Descargar Comprobantes</p>
+                    </a>
+                </li>
+
+                <!-- Spacer for separation -->
+                <li class="nav-item mt-5">
+                    <div class="nav-divider"></div>
+                </li>
+
+                <!-- Videojuegos Section -->
+                <li class="nav-header">VIDEOJUEGOS</li>
+                
+                <!-- Plataformas -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Plataformas
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @foreach($plataformas as $plataforma)
+                        <li class="nav-item">
+                            <a href="{{ url('/plataformas/' . $plataforma->id) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ $plataforma->nombre }}</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                @foreach($plataformas as $plataforma)
-                                <li class="nav-item">
-                                    <a href="{{ url('/plataformas/' . $plataforma->id) }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>{{ $plataforma->nombre }}</p>
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Categorias
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                @foreach($categorias as $categoria)
-                                <li class="nav-item">
-                                    <a href="{{ url('/categorias/' . $categoria->id) }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>{{ $categoria->nombre }}</p>
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </li>
+                        @endforeach
                     </ul>
-                </nav>
-            </div>
-        </aside>
+                </li>
+
+                <!-- Categorías -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Categorías
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @foreach($categorias as $categoria)
+                        <li class="nav-item">
+                            <a href="{{ url('/categorias/' . $categoria->id) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ $categoria->nombre }}</p>
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                
+                <!-- Go to Home -->
+                <li class="nav-item" style="margin-top:90%">
+                    <a href="{{ url('/') }}" class="nav-link">
+                        <i class="nav-icon fas fa-angle-double-left"></i>
+                        <p>Go to Home</p>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
@@ -97,12 +135,13 @@
         </div>
     </div>
           <!-- Modal -->
-          <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg"> <!-- Add 'modal-lg' for a larger modal -->
+          <div class="modal" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+          
+          <div class="modal-dialog modal-lg"> <!-- Add 'modal-lg' for a larger modal -->       
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table">
@@ -113,7 +152,7 @@
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Subtotal</th>
-                            <th>Acciones</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="lista-carrito">
