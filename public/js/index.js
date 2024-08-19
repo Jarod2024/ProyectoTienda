@@ -191,13 +191,32 @@ function generarOrden() {
 		},
 		body: JSON.stringify({ productos: carrito })
 	})
+	.then(response => response.json())
+.then(data => {
+    if (data.redirect_url) {
+        window.location.href = data.redirect_url;
+    } else if (data.message) {
+        // Mostrar el error en una ventana emergente
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: data.message
+        });
+    }
+})
+.catch(error => {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ocurrió un error inesperado.'
+    });
+    console.error('Error:', error);
+});
 }
 
 document.getElementById('generarOrdenButton').addEventListener('click', function() {
     generarOrden();
 });
-
-
 
 
 

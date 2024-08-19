@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Carrito extends Model
+class carrito extends Model
 {
     use HasFactory;
    
@@ -25,11 +25,11 @@ class Carrito extends Model
     }
 
     // Relationship with Producto (adjust as needed)
-    public function Comprobante()
+    public function comprobante()
     {
-        return $this->hasOne(comprobante::class, 'id', 'productos'); // Adjust if needed based on how products are related
+        return $this->hasOne(Comprobante::class, 'carrito_id');
     }
-    
+
     public function detallesCarrito()
     {
     return $this->hasMany(DetallesCarrito::class);
