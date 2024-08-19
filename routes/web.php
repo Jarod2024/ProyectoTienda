@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
+use App\Http\Controllers\OrdenController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -74,8 +75,18 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
+
 //restablecimiento de contraseña estén habilitadas
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
+Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
+
+// routes/web.php
+Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
+Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
+
