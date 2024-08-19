@@ -14,6 +14,7 @@ use App\Http\Controllers\DashController;
 use App\Http\Controllers\OrdenController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,8 +65,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // Añade más rutas aquí...
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 // routes/web.php
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -75,9 +76,17 @@ Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
 
+//restablecimiento de contraseña estén habilitadas
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
 Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
 // routes/web.php
 Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
 Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
+
