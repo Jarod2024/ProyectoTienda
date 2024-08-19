@@ -74,7 +74,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 0 20px 20px;
     background-color: #fff;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -97,7 +97,31 @@ main {
 }
 
 .welcome-image img {
-    width: 300px;
+    width: 380px;
+}
+
+.welcome-image-section {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.welcome-background-image-section {
+    background-image: linear-gradient(to left bottom, #ff5d97, #f34776, #e33255, #d11d35, #bb0b12);
+    border-radius: 20px 0 0 20px;
+    height: 400px;
+    width: 400px;
+    z-index: 0;
+}
+
+.welcome-image {
+    position: absolute;
+    right: 190px;
+    top: 30px;
+    z-index: 2;
 }
 
 .offers, .new-releases {

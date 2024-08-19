@@ -255,3 +255,17 @@ footer .social-icons a {
     position: relative;
     top: -1px;
 }
+
+.btn-primary {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+}
+.btn-primary {
+    background-color: #0056b3;
+}

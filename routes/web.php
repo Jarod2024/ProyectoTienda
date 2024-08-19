@@ -11,8 +11,12 @@ use App\Http\Controllers\EmployeeDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\juegoController;
 use App\Http\Controllers\DashController;
+use App\Http\Controllers\OrdenController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\HistorialController;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,8 +67,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // Añade más rutas aquí...
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 // routes/web.php
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');

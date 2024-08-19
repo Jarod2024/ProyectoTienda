@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- C:\xampp\htdocs\juegos\resources\views\auth\login.blade.php -->
 <html lang="es">
   <head>
     <title>Title</title>
@@ -20,18 +21,17 @@
   </head>
 
   <body>
-    <section class="h-100 gradient-form" style="background-color: #b43b3b;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
-        <div class="card rounded-3 text-black">
-          <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+    <section class="h-100 gradient-form" style="background-color: #f0e4e4; background-image: url('{{asset('images/Fondo1.jpg')}}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black" style="background-color: rgba(255, 255, 255, 0.6); margin-top: 110px;"> <!-- Ajusta el margin-top para mover el contenedor hacia abajo -->
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="{{asset('images/admin.jpg')}}"
-                    style="width: 185px;" alt="logo">
+                  
                   <h4 class="mt-1 mb-5 pb-1">Iniciar Sesión</h4>
                 </div>
 
@@ -42,20 +42,21 @@
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example11">Correo</label>  
                   <input type="email" name="email" id="form2Example11" class="form-control"
-                      placeholder="Ingresar correo" />
+                      placeholder="Ingresar Correo" />
                     
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form2Example22">Contraseña</label>  
-                  <input type="password" name="password" id="form2Example22" class="form-control" />
+                  <input type="password" name="password" id="form2Example22" class="form-control" 
+                  placeholder="Ingresar Contraseña" />
                     
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
                     type="submit">Ingresar</button>
-                    <a class="text-muted" href="#!">¿Olvidaste tu contraseña?</a>
+                    <a class="text-muted" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
@@ -69,10 +70,13 @@
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">BIENVENIDO ENTRETENIMIENTO GAMMING</h4>
-                <p class="small mb-0">Bienvenido al nuestro rincón virtual de entretenimiento 
-                  gamming donde la emoción y la aventura se fusionan. La personas amantes de los video 
-                  juegos tenemos variedad de productos que les puede interesar y muchos juegos de estreno..</p>
+                <img src="{{asset('images/Logo1.jpg')}}"
+                     style="width: 100%; max-width: 350px; height: 350px; border-radius: 50%; box-shadow: 0px 4px 15px rgba(156, 131, 164, 0.1); display: block; margin: 0 auto; object-fit: cover;"
+                     alt="logo">
+              </div>
+            </div>
+            
+
               </div>
             </div>
           </div>
