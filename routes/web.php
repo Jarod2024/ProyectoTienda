@@ -36,7 +36,7 @@ Auth::routes();
 
 
 Livewire::setUpdateRoute(function($handle) {
-    return Route::post('/juegos/public/livewire/update', $handle);
+    return Route::post('/ProyectoWeb2.0/public/livewire/update', $handle);
 });
 
 
@@ -77,21 +77,29 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
 Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
 
+// Ruta de home accesible para todos los usuarios autenticados
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-//restablecimiento de contraseña estén habilitadas
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+// Ruta de perfil accesible para todos los usuarios autenticados
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
 
+// Rutas solo accesibles para administradores
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Aquí añades todas las rutas que solo los administradores pueden acceder
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    // Añade más rutas aquí...
+});
 
-Route::get('/plataformas/{plataforma}', [juegoController::class, 'porPlataforma'])->name('filtros');
-Route::get('/categorias/{categoria}', [juegoController::class, 'porCategoria'])->name('filtros');
+// Rutas accesibles para empleados
+Route::middleware(['auth', 'role:employee'])->group(function () {
+    // Aquí añades todas las rutas que solo los empleados pueden acceder
+    Route::get('/employee/dashboard', [EmployeeDashboardController::class, 'index'])->name('employee.dashboard');
+    // Añade más rutas aquí...
+});
 
-// routes/web.php
-Route::post('/orden/generar', [OrdenController::class, 'generarOrden'])->name('generar');
-Route::get('/orden/{carrito_id}', [OrdenController::class, 'mostrarOrden'])->name('mostrar');
-Route::get('/orden/{carrito_id}/descargar', [PDFController::class, 'generarPdf'])->name('descargar');
-Route::post('/comprobante', [OrdenController::class, 'Store'])->name('comprobante');
-Route::get('/historial', [HistorialController::class, 'mostrarHistorial'])->name('historial');
-Route::get('/descargas', [PDFController::class, 'mostrarHistorial'])->name('comprobantes');
+// Rutas accesibles para usuarios
+Route::middleware(['auth', 'role:user'])->group(function () {
+    // Aquí añades todas las rutas que solo los usuarios pueden acceder
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    // Añade más rutas aquí...
+});

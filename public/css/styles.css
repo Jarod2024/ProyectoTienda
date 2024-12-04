@@ -19,13 +19,10 @@ header .container {
     margin: 0 auto;
     padding: 0 20px;
     border: 10px solid #5DADE2;
-    border-radius: 15px;
-    /* Para bordes redondeados */
-    background-color: white;
-    /* Color del fondo */
+    border-radius: 15px; /* Para bordes redondeados */
+    background-color: white; /* Color del fondo */
     text-align: center;
 }
-
 .logo {
     flex: 1;
     text-align: center;
@@ -127,8 +124,7 @@ main {
     z-index: 2;
 }
 
-.offers,
-.new-releases {
+.offers, .new-releases {
     margin-top: 40px;
     background-color: #fff;
     padding: 20px;
@@ -136,8 +132,7 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.offers h2,
-.new-releases h2 {
+.offers h2, .new-releases h2 {
     font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
@@ -552,41 +547,4 @@ footer .social-icons img {
     padding: 5px 10px;
     font-size: 14px;
 }
-
-.btn-primary {
-    background-color: #007bff !important;
-    color: white !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    font-size: 16px !important;
-    border-radius: 5px !important;
-    text-align: center !important;
-    cursor: pointer !important;
-}
-/*Carrito*/
-.container-cart-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.custom-counter {
-    font-size: 15px; /* Ajusta el tamaño del texto del contador */
-    background-color: #ff0000; /* Cambia el color de fondo si lo deseas */
-    color: #ffffff; /* Cambia el color del texto */
-    padding: 2px 8px; /* Ajusta el tamaño del contenedor */
-    border-radius: 50%; /* Haz que el contador sea circular */
-    position: relative;
-    top: 10px; /* Ajusta la posición vertical del contador */
-    left: -10px; /* Ajusta la posición horizontal del contador */
-}
-.header-box {
-    padding: 10px;
-    background-color: #f8f9fa; /* Color de fondo del rectángulo */
-    border: 1px solid #ddd; /* Color del borde del rectángulo */
-    border-radius: 4px; /* Bordes redondeados */
-}
-.header-box h2 {
-    margin: 0;
-    color: #333; /* Color del texto del encabezado */
-}
+/*CSS para valoración con estrellas*/

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('fecha')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->decimal('monto_total', 8, 2);
             $table->string('estado');
-            $table->string('cod_transferencia')->nullable(); // Nueva columna para el código de transferencia
             $table->timestamps();
         });
     }

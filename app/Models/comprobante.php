@@ -15,22 +15,14 @@ class comprobante extends Model
         'fecha',
         'monto_total',
         'estado',
-        'cod_transferencia',
     ];
-
-    // Relación con Cliente
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
     }
 
-    // Relación con Carrito
-    public function Carrito()
-    {
-        return $this->belongsTo(carrito::class);
-    }
-
- 
+    // Relación con los carritos
+    
     public function calcularTotal()
     {
         return $this->carritos()->sum('total');
